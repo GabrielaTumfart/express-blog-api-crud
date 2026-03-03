@@ -83,4 +83,4 @@ function destroy(req, res) {
 }
 module.exports = { index, show, store, update, modify, destroy };
 
-// Milestone 1: utte le rotte rispondono correttamente
+// Milestone 1: tutte le rotte rispondono correttamente
