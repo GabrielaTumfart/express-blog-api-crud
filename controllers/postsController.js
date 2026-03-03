@@ -49,4 +49,14 @@ function update(req, res) {
   res.json(responseData);
 }
 
-module.exports = { index, show, store, update };
+// Modify - PATH /posts/:id - Modifica parziale di un post
+function modify(req, res) {
+  const postId = parseInt(req.params.id);
+  const responseData = {
+    message: `Modifica parziale del post ${postId}`,
+    success: true,
+  };
+  res.json(responseData);
+}
+
+module.exports = { index, show, store, update, modify };
