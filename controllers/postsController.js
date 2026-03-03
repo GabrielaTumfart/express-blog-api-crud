@@ -83,8 +83,12 @@ function destroy(req, res) {
 }
 module.exports = { index, show, store, update, modify, destroy };
 
+//! Su Postman eseguo e seguenti test:
+
 // Milestone 1: tutte le rotte rispondono correttamente
 
 // Milestone 2: index e show restituiscono JSON correttamente
 
 // Bonus: testo il 404
+
+// Milestone 2: Testo destroy
