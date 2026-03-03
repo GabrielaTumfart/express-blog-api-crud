@@ -59,4 +59,17 @@ function modify(req, res) {
   res.json(responseData);
 }
 
-module.exports = { index, show, store, update, modify };
+// Destroy - DELETE /posts/:id - Eliminazione di un post
+function destroy(req, res) {
+  const postId = parseInt(req.params.id);
+  const post = posts.find((post) => post.id === postId);
+
+  // BONUS - Se il post non esiste risponde con errore 404
+  if (!post) {
+    return res.status(404).json({
+      message: `Post ${postId} non trovato`,
+      success: false,
+    });
+  }
+}
+module.exports = { index, show, store, update, modify, destroy };
