@@ -17,7 +17,7 @@ function show(req, res) {
 
   if (!post) {
     return res.status(404).json({
-      message: `Post ${postID} non trovato`,
+      message: `Errore 404 - Post ${postID} non trovato`,
       success: false,
     });
   }
@@ -67,7 +67,7 @@ function destroy(req, res) {
   // BONUS - Se il post non esiste risponde con errore 404
   if (!post) {
     return res.status(404).json({
-      message: `Post ${postId} non trovato`,
+      message: `Errore 404 - Post ${postId} non trovato`,
       success: false,
     });
   }
@@ -84,3 +84,7 @@ function destroy(req, res) {
 module.exports = { index, show, store, update, modify, destroy };
 
 // Milestone 1: tutte le rotte rispondono correttamente
+
+// Milestone 2: index e show restituiscono JSON correttamente
+
+// Bonus: testo il 404
