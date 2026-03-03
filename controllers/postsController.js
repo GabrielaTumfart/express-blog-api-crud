@@ -1,4 +1,4 @@
-const posts = require("../data/posts");
+let posts = require("../data/posts");
 
 // Index - GET /posts/ - Restituisce la lista di tutti i post in formato JSON
 function index(req, res) {
