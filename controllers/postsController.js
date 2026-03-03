@@ -1,5 +1,6 @@
 const posts = require("../data/posts");
 
+// Index - GET /posts/ - Restituisce la lista di tutti i post in formato JSON
 function index(req, res) {
   const responseData = {
     result: posts,
@@ -9,6 +10,7 @@ function index(req, res) {
   res.json(responseData);
 }
 
+// Show - GET /posts/:id - Restituisce un singolo post in formato JSON
 function show(req, res) {
   const postId = parseInt(req.params.id);
   const post = posts.find((posts) => post.id === postId);
@@ -20,7 +22,7 @@ function show(req, res) {
     });
   }
 }
-
+// Se il post non esiste risponde con errore 404
 const responseData = {
   result: post,
   message: `Dettaglio del post ${postId}`,
@@ -28,4 +30,13 @@ const responseData = {
 };
 res.json(responseData);
 
-module.exports = { index, show };
+// Store - POST /posts/ - Creazione di un nuovo post
+function store(req, res) {
+  const responseData = {
+    message: "Creazione di un post",
+    success: true,
+  };
+  res.json(responseData);
+}
+
+module.exports = { index, show, store };
