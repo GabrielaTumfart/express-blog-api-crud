@@ -71,5 +71,14 @@ function destroy(req, res) {
       success: false,
     });
   }
+
+  // Rimuoviamo il post dalla lista con filter
+  posts = posts.filter((post) => post.id !== postId);
+
+  // Stampiamo la lista aggiornata nel terminale
+  console.log("Lista aggiornata:", posts);
+
+  // Rispondiamo con status 204 e nessun contenuto
+  res.status(204).send();
 }
 module.exports = { index, show, store, update, modify, destroy };
