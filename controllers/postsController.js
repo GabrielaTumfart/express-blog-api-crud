@@ -39,4 +39,14 @@ function store(req, res) {
   res.json(responseData);
 }
 
-module.exports = { index, show, store };
+// Update - PUT /posts/:id - Modifica intera di un post
+function update(req, res) {
+  const postID = parseInt(req.params.id);
+  const responseData = {
+    message: `Modifica intera del post ${postId}`,
+    success: true,
+  };
+  res.json(responseData);
+}
+
+module.exports = { index, show, store, update };
