@@ -4,86 +4,22 @@ const router = express.Router();
 const postsController = require("../controllers/postsController");
 
 // Index - GET /posts/ - Lista di tutti i post
-router.get("/", (req, res) => {
-  const responseData = {
-    result: posts,
-    message: "Lista dei post",
-    success: true,
-  };
-  res.json(responseData);
-});
+router.get("/", postsController.index);
 
 // Show - GET /posts/:id - Dettaglio di un singolo post
-router.get("/:id", (req, res) => {
-  const postId = parseInt(req.params.id);
-  const post = posts.find((post) => post.id === postId);
-  if (!post) {
-    const responseData = {
-      message: `Post ${postId} non trovato`,
-      success: false,
-    };
-    return res.status(404).json(responseData);
-  }
-  const responseData = {
-    result: post,
-    message: `Dettaglio del post ${postId}`,
-    success: true,
-  };
-  res.json(responseData);
-});
+router.get("/:id", postsController.show);
 
 // Store - POST /posts/ - Creazione di un nuovo post
-router.post("/", (req, res) => {
-  console.log(req.body);
-  const { title, content, image, tags } = req.body;
-  // creo un nuovo id incrementando l'ultimo id presente
-  const nweId = posts[posts.length - 1].id + 1;
-  // creo un nuovo oggetto post
-  const newPost = {
-    id: nweId,
-    content,
-    image,
-    tags,
-  };
-  // aggiungo il nuovo post all'array
-  posts.push(newPost);
-
-  // controllo
-  console.log(posts);
-
-  // restituisco lo status corretto e il post appena creato
-  res.status(201).json(newPost);
-});
+router.post("/", postsController.store);
 
 // Update - PUT /posts/:id - Modifica intera di un post
-router.put("/:id", (req, res) => {
-  const postId = parseInt(req.params.id);
-  const responseData = {
-    message: `Modifica del post ${postId}`,
-    success: true,
-  };
-  res.json(responseData);
-});
+router.put("/:id", postsController.update);
 
 // Modify - PATCH /posts/:id - Modifica parziale di un post
-router.patch("/:id", (req, res) => {
-  const postId = parseInt(req.params.id);
-  const responseData = {
-    message: `Modifica parziale del post ${postId}`,
-    success: true,
-  };
-  res.json(responseData);
-});
+router.patch("/:id", postsController.modify);
 
 // Destroy - DELETE /posts/:id - Cancellazione di un post
-router.delete("/:id", (req, res) => {
-  const postId = parseInt(req.params.id);
-  const responseData = {
-    message: `Cancellazione del post ${postId}`,
-    success: true,
-  };
-  res.json(responseData);
-});
+router.delete("/:id", postsController.destroy);
 
 module.exports = router;
 
