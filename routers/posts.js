@@ -36,11 +36,23 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   console.log(req.body);
   const { title, content, image, tags } = req.body;
-  const responseData = {
-    message: "Creazione di un post",
-    success: true,
+  // creo un nuovo id incrementando l'ultimo id presente
+  const nweId = posts[posts.length - 1].id + 1;
+  // creo un nuovo oggetto post
+  const newPost = {
+    id: nweId,
+    content,
+    image,
+    tags,
   };
-  res.json(responseData);
+  // aggiungo il nuovo post all'array
+  posts.push(newPost);
+
+  // controllo
+  console.log(posts);
+
+  // restituisco lo status corretto e il post appena creato
+  res.status(201).json(newPost);
 });
 
 // Update - PUT /posts/:id - Modifica intera di un post
