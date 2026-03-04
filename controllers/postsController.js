@@ -30,7 +30,7 @@ const responseData = {
 };
 res.json(responseData);
 
-// Store - POST /posts/ - Creazione di un nuovo post
+// Store - POST /posts/ - Creazione di un nuovo post // Milestone 3 inizia qui:
 function store(req, res) {
   const responseData = {
     message: "Creazione di un post",
