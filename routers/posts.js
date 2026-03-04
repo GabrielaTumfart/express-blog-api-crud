@@ -35,6 +35,7 @@ router.get("/:id", (req, res) => {
 // Store - POST /posts/ - Creazione di un nuovo post
 router.post("/", (req, res) => {
   console.log(req.body);
+  const { title, content, image, tags } = req.body;
   const responseData = {
     message: "Creazione di un post",
     success: true,
