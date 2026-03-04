@@ -59,6 +59,27 @@ function store(req, res) {
   res.status(201).json(newPost);
 }
 
+// Update
+// Update - PUT /posts/:id - Modifica intera di un post
+function update(req, res) {
+  const postId = parseInt(req.params.id);
+  const post = posts.find((post) => post.id === postId);
+
+  // Aggiorniamo tutti i campi del post
+  post.title = req.body.title;
+  post.content = req.body.content;
+  post.image = req.body.image;
+  post.tags = req.body.tags;
+
+  const responseData = {
+    result: post,
+    message: `Modifica intera del post ${postId}`,
+    success: true,
+  };
+
+  res.json(responseData);
+}
+
 // Modify - PATH /posts/:id - Modifica parziale di un post
 function modify(req, res) {
   const postId = parseInt(req.params.id);
