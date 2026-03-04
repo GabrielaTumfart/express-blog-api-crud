@@ -30,26 +30,33 @@ function show(req, res) {
   };
   res.json(responseData);
 }
-
-// Store - POST /posts/ - Creazione di un nuovo post // Milestone 3 inizia qui:
+// Milestone 3 inizia qui:
+// Store - POST /posts/ - Creazione di un nuovo post
 function store(req, res) {
-  // Milestone 2: stampo i dati in arrivo nel terminale
   console.log(req.body);
-  const responseData = {
-    message: "Creazione di un post",
-    success: true,
-  };
-  res.json(responseData);
-}
 
-// Update - PUT /posts/:id - Modifica intera di un post
-function update(req, res) {
-  const postId = parseInt(req.params.id);
-  const responseData = {
-    message: `Modifica intera del post ${postId}`,
-    success: true,
+  const { title, content, image, tags } = req.body;
+
+  // Creo un nuovo id incrementando l'ultimo id presente
+  const newId = posts[posts.length - 1].id + 1;
+
+  // Creo un nuovo oggetto post
+  const newPost = {
+    id: newId,
+    title,
+    content,
+    image,
+    tags,
   };
-  res.json(responseData);
+
+  // Aggiungo il nuovo post all'array
+  posts.push(newPost);
+
+  // Controllo
+  console.log(posts);
+
+  // Restituisco status 201 e il post appena creato
+  res.status(201).json(newPost);
 }
 
 // Modify - PATH /posts/:id - Modifica parziale di un post
