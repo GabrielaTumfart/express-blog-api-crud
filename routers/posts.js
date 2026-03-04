@@ -1,6 +1,7 @@
 const express = require("express");
 const posts = require("../data/posts");
 const router = express.Router();
+const postsController = require("../controllers/postsController");
 
 // Index - GET /posts/ - Lista di tutti i post
 router.get("/", (req, res) => {
@@ -33,6 +34,7 @@ router.get("/:id", (req, res) => {
 
 // Store - POST /posts/ - Creazione di un nuovo post
 router.post("/", (req, res) => {
+  console.log(req.body);
   const responseData = {
     message: "Creazione di un post",
     success: true,

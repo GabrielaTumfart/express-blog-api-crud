@@ -13,25 +13,28 @@ function index(req, res) {
 // Show - GET /posts/:id - Restituisce un singolo post in formato JSON
 function show(req, res) {
   const postId = parseInt(req.params.id);
-  const post = posts.find((posts) => post.id === postId);
+  const post = posts.find((post) => post.id === postId);
 
   if (!post) {
     return res.status(404).json({
-      message: `Errore 404 - Post ${postID} non trovato`,
+      message: `Errore 404 - Post ${postId} non trovato`,
       success: false,
     });
   }
+
+  // Se il post non esiste risponde con errore 404
+  const responseData = {
+    result: post,
+    message: `Dettaglio del post ${postId}`,
+    success: true,
+  };
+  res.json(responseData);
 }
-// Se il post non esiste risponde con errore 404
-const responseData = {
-  result: post,
-  message: `Dettaglio del post ${postId}`,
-  success: true,
-};
-res.json(responseData);
 
 // Store - POST /posts/ - Creazione di un nuovo post // Milestone 3 inizia qui:
 function store(req, res) {
+  // Milestone 2: stampo i dati in arrivo nel terminale
+  console.log(req.body);
   const responseData = {
     message: "Creazione di un post",
     success: true,
@@ -41,7 +44,7 @@ function store(req, res) {
 
 // Update - PUT /posts/:id - Modifica intera di un post
 function update(req, res) {
-  const postID = parseInt(req.params.id);
+  const postId = parseInt(req.params.id);
   const responseData = {
     message: `Modifica intera del post ${postId}`,
     success: true,
