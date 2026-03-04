@@ -86,3 +86,5 @@ router.delete("/:id", (req, res) => {
 });
 
 module.exports = router;
+
+// Milestone 3: test: testo store su Postman, nuovo post creato con status 201 e funziona corretamente
