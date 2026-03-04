@@ -73,7 +73,7 @@ function update(req, res) {
     });
   }
 
-  // Aggiorniamo tutti i campi del post
+  // Aggiorniamo tutti i campi del post // Milestone 4
   post.title = req.body.title;
   post.content = req.body.content;
   post.image = req.body.image;
