@@ -65,6 +65,14 @@ function update(req, res) {
   const postId = parseInt(req.params.id);
   const post = posts.find((post) => post.id === postId);
 
+  // Bonus - Se il post non esiste risponde con ERRORE 404
+  if (!post) {
+    return res.status(404).json({
+      message: `ERRORE 404 - Post ${postId} non trovato`,
+      success: false,
+    });
+  }
+
   // Aggiorniamo tutti i campi del post
   post.title = req.body.title;
   post.content = req.body.content;
@@ -123,3 +131,5 @@ module.exports = { index, show, store, update, modify, destroy };
 // Bonus: testo il 404
 
 // Milestone 2: Testo destroy
+
+// Bonus: testo il bonus 404 su update
