@@ -26,3 +26,5 @@ module.exports = router;
 // Milestone 3: test: testo store su Postman, nuovo post creato con status 201 e funziona corretamente
 
 // test: testato middleware notFound su Postman, risponde con status 404
+
+// test: testato middleware errorsHandler su Postman, risponde con status 500
