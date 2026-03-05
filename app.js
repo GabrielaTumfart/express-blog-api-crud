@@ -16,6 +16,12 @@ const errorsHandler = require("./middlewares/errorsHandler");
 // Registro il router con prefisso /posts
 app.use("/posts", postsRouter);
 
+// Gestisco le rotte inesistenti
+app.use(notFound);
+
+// Gestisco gli errori
+app.use(errorsHandler);
+
 const port = 3000;
 
 app.listen(port, () => {
