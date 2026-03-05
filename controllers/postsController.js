@@ -2,7 +2,7 @@ let posts = require("../data/posts");
 
 // Index - GET /posts/ - Restituisce la lista di tutti i post in formato JSON
 function index(req, res) {
-  //throw new Erros("Custom error");
+  //throw new Error("Custom error");
   const responseData = {
     result: posts,
     message: "Lista dei post di Gabriela",
