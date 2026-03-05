@@ -9,6 +9,10 @@ app.use(express.static("public"));
 // Importo router
 const postsRouter = require("./routers/posts");
 
+// Importo middleware
+const notFound = require("./middlewares/notFound");
+const errorsHandler = require("./middlewares/errorsHandler");
+
 // Registro il router con prefisso /posts
 app.use("/posts", postsRouter);
 
