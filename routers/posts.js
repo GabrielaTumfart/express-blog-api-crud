@@ -31,3 +31,5 @@ module.exports = router;
 // test: testato middleware notFound su Postman, risponde con status 404
 
 // test: testato middleware errorsHandler su Postman, risponde con status 500
+
+// test: testo middleware noBug su Postman, funziona correttamente
