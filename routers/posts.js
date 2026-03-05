@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const postsController = require("../controllers/postsController");
+const noBug = require("../middlewares/noBug");
 
 // Index - GET /posts/ - Lista di tutti i post
 router.get("/", postsController.index);
@@ -10,10 +11,12 @@ router.get("/", postsController.index);
 router.get("/:id", postsController.show);
 
 // Store - POST /posts/ - Creazione di un nuovo post
-router.post("/", postsController.store);
+//router.post("/", postsController.store);
+router.post("/", noBug, postsController.store);
 
 // Update - PUT /posts/:id - Modifica intera di un post
-router.put("/:id", postsController.update);
+//router.put("/:id", postsController.update);
+router.post("/:id", noBug, postsController.update);
 
 // Modify - PATCH /posts/:id - Modifica parziale di un post
 router.patch("/:id", postsController.modify);
